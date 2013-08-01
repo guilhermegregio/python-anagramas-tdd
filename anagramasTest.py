@@ -7,3 +7,8 @@ class AnagramasTest(TestCase):
 		anagrama = Anagramas('a')
 		
 		self.assertEqual(['a'], anagrama.generate())
+
+	def testShouldAnagramThenWordTwoLetters(self):
+		anagrama = Anagramas('ab')
+		
+		self.assertEqual(['ab', 'ba'], anagrama.generate())
