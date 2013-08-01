@@ -22,3 +22,8 @@ class AnagramasTest(TestCase):
 		anagrama = Anagramas('abc')
 
 		self.assertEqual(['abc', 'acb', 'bac', 'bca', 'cab', 'cba'], anagrama.generate())
+
+	def testShouldAnagramThenWordBiro(self):
+		anagrama = Anagramas('biro')
+
+		self.assertEqual(['biro','bior','brio','broi','boir','bori','ibro','ibor','irbo','irob','iobr','iorb','rbio','rboi','ribo','riob','roib','robi','obir','obri','oibr','oirb','orbi','orib'], anagrama.generate())
