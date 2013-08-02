@@ -1,29 +1,17 @@
 from unittest import TestCase
-from anagramas import Anagramas
+import anagramas
 
 class AnagramasTest(TestCase):
 
-	def testShouldAnagramThenA(self):
-		anagrama = Anagramas('a')
-		
-		self.assertEqual(['a'], anagrama.generate())
+	def test_should_return_anagram_word_with_a_letter(self):
+		self.assertEqual(['a'], anagramas.generate('a'))
 
-	def testShouldAnagramThenWordTwoLetters(self):
-		anagrama = Anagramas('ab')
-		
-		self.assertEqual(['ab', 'ba'], anagrama.generate())
+	def test_should_return_anagram_word_with_repeated_letters(self):
+		self.assertEqual(['aa'], anagramas.generate('aa'))
 
-	def testShouldAnagramThenWordTwoLettersInverse(self):
-		anagrama = Anagramas('ba')
-		
-		self.assertEqual(['ba', 'ab'], anagrama.generate())
+	def test_should_return_anagram_ab_result_ab_ba(self):
+		self.assertEqual('ab ba'.split(' '), anagramas.generate('ab'))
 
-	def testShouldAnagramThenWordThreeLetters(self):
-		anagrama = Anagramas('abc')
-
-		self.assertEqual(['abc', 'acb', 'bac', 'bca', 'cab', 'cba'], anagrama.generate())
-
-	def testShouldAnagramThenWordBiro(self):
-		anagrama = Anagramas('biro')
-
-		self.assertEqual(['biro','bior','brio','broi','boir','bori','ibro','ibor','irbo','irob','iobr','iorb','rbio','rboi','ribo','riob','roib','robi','obir','obri','oibr','oirb','orbi','orib'], anagrama.generate())
+	def test_should_return_anagram_of_the_word_bori(self):
+		anagramaBiro = ['irbo', 'iorb', 'brio', 'bori', 'orib', 'oibr', 'obir', 'boir', 'bior', 'orbi', 'biro', 'rboi', 'ibro', 'robi', 'riob', 'ibor', 'roib', 'obri', 'iobr', 'rbio', 'ribo', 'broi', 'irob', 'oirb']
+		self.assertEqual(anagramaBiro, anagramas.generate('bori'))
